@@ -3,7 +3,7 @@ on: [push]
 jobs:
   docker:
     name: Build and push Docker images
-    runs-on: ubuntu-latest
+    runs-on: ["self-hosted", "onpremdti"]
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -30,7 +30,7 @@ jobs:
         tags: vsgdev/jsmovievoting_client:1.0.0
   kubernetes:
     name: Deploy to Kubernetes
-    runs-on: ubuntu-latest
+    runs-on: ["self-hosted", "onpremdti"]
     needs: docker
     steps:
     - name: Checkout code
